@@ -1,0 +1,263 @@
+# AHIL Vertical Video Content Workflow - Planning Conversation
+# Date: January 26, 2026
+
+## User Request
+
+The user (Steffany, co-lead of Abundant Housing Illinois) wants to create a repository that uses Remotion with Claude Code to create vertical video content for TikTok and Instagram for AHIL's housing advocacy work.
+
+Key resources referenced:
+- https://gist.github.com/ThariqS/3d446e7c7aa9eb94f468194deb73028f (Remotion CLAUDE.md)
+- https://github.com/trycua/launchpad (Remotion monorepo pattern)
+- https://www.remotion.dev/docs/ai/claude-code (Official docs)
+- Thariq's spec.md interview technique using AskUserQuestionTool
+
+The user's Claude Code instance already has Remotion skills added via NPX.
+
+Desired workflow:
+1. Claude Code autonomously suggests video ideas
+2. User selects which ideas to pursue
+3. Claude Code uses Remotion to create the video
+4. Iterative editing with Claude Code
+5. Scheduled posting to TikTok, Instagram, YouTube Shorts
+
+---
+
+## Analysis & Recommendations
+
+### Proposed Workflow Architecture
+
+**Phase 1: Idea Generation (Weekly/Bi-weekly)**
+Claude Code autonomously suggests 3-5 video ideas based on:
+- Current AHIL campaigns (4-Flats, parking reform, Illinois Housing Opportunity Act)
+- Recent housing policy news (could integrate web search)
+- Content calendar gaps
+- What's worked before (engagement metrics you feed back)
+- Seasonal/political timing (city council meetings, election cycles)
+
+**Phase 2: Spec Development (User input)**
+User picks 1-2 ideas → Claude interviews via AskUserQuestionTool:
+- What's the hook? (First 3 seconds are everything on TikTok)
+- Who's the target audience? (Left-leaning 33rd Ward activists vs. general public)
+- What's the call to action? (Sign petition, attend meeting, share video)
+- What data/visuals should we include?
+- Tone: Confrontational? Educational? Community-oriented?
+- Duration: 30s, 60s, 90s?
+
+**Phase 3: Production (Automated)**
+Claude Code generates Remotion components:
+- Motion graphics from data (CPS capacity, housing loss stats)
+- Text animations with messaging
+- Appropriate transitions
+- Renders to 9:16 vertical format (1080x1920)
+- Exports multiple formats (with/without captions)
+
+**Phase 4: Review & Iteration**
+User previews → provides feedback → Claude iterates
+- "Make the data visualization slower"
+- "Change the CTA to mention the petition"
+- "Add more urgency to the opening"
+
+**Phase 5: Publishing (Semi-automated)**
+Options for posting:
+- Manual: Download and post (simplest, most control)
+- Semi-auto: Claude prepares posts, user approves and clicks publish
+- Full auto: Integration with social media APIs (more complex)
+
+---
+
+### Video Content Types That Work for Single-Issue Advocacy
+
+**1. "Did You Know" Data Drops (15-30s)**
+- Single shocking stat with animated visualization
+- Example: "Chicago has lost 11,775 housing units since 2013. Here's why."
+
+**2. Myth Busters (30-60s)**
+- Take a common objection, debunk it
+- Example: "They say parking reform will make parking impossible. Here's what actually happened in Austin..."
+
+**3. "Explain Like I'm 5" Educational (60-90s)**
+- Break down complex policy simply
+- Example: "Why can't we build 4-flats anymore? (A 60-second history)"
+
+**4. Before/After Comparisons (15-30s)**
+- Show what neighborhoods looked like when 4-flats were legal vs now
+- Historic photos + modern shots
+
+**5. "What Other Cities Did" (30-60s)**
+- Minneapolis, Portland, Austin examples
+- Visual comparison of outcomes
+
+**6. Personal Stakes Stories (30-60s)**
+- "My landlord raised rent $400. Here's why that happened." (supply economics)
+- Connects policy to lived experience
+
+**7. Meeting/Vote Countdowns (15s)**
+- "City Council votes on parking reform in 5 days. Here's what you need to know."
+- Creates urgency
+
+---
+
+### Posting Frequency Recommendation
+
+Research suggests 3-5 posts per week for nonprofit TikTok accounts.
+
+Recommended approach:
+- **Minimum viable**: 1 video/week (consistent > frequent)
+- **Sustainable target**: 2 videos/week (Tues/Thurs or Mon/Wed)
+- **Campaign pushes**: 3-4/week during critical periods (before votes, etc.)
+
+---
+
+### Draft SPEC.md Structure
+
+```markdown
+# AHIL Vertical Video Content System
+
+## Overview
+Automated pipeline for creating 9:16 vertical videos for TikTok, Instagram Reels, and YouTube Shorts promoting housing abundance in Illinois.
+
+## Core Components
+
+### 1. Content Library
+- Reusable data visualizations (CPS capacity, housing unit loss, tax burden)
+- Brand assets (AHIL logo, colors, fonts)
+- Stock footage library (Chicago neighborhoods, construction, transit)
+- Approved messaging/talking points
+
+### 2. Video Templates
+- Data Drop (15-30s)
+- Myth Buster (30-60s)
+- Explainer (60-90s)
+- Call to Action (15s)
+
+### 3. Generation Workflow
+- Idea suggestion system
+- Spec interview process
+- Remotion rendering pipeline
+- Review/iteration loop
+
+### 4. Publishing
+- Multi-platform export (TikTok, IG Reels, YT Shorts)
+- Caption generation
+- Scheduling recommendations
+
+## Technical Requirements
+- Remotion project with Tailwind
+- 1080x1920 vertical format
+- 30fps default
+- Exported as MP4
+
+## Content Guidelines
+- Lead with shared values (community, affordability, opportunity)
+- Data-driven but emotionally resonant
+- Clear call to action
+- Avoid developer-focused framing
+- Address displacement concerns directly
+
+## Questions to Resolve
+[NEEDS CLARIFICATION: Exact brand colors and fonts]
+[NEEDS CLARIFICATION: Preferred voiceover approach - text only? AI voice? Your voice?]
+[NEEDS CLARIFICATION: Budget for stock footage vs all motion graphics]
+[NEEDS CLARIFICATION: Analytics/feedback loop integration]
+```
+
+---
+
+### Key Recommendations
+
+1. **Start simple**: Get one video type working end-to-end before building the full system. Start with the "Data Drop" format since materials are data-rich.
+
+2. **Manual posting first**: Don't automate posting until content quality is validated and you understand what performs. The feedback loop is crucial.
+
+3. **Build a component library**: Once you have 5-10 videos, extract patterns into reusable Remotion components (like launchpad does).
+
+4. **Track what works**: Simple spreadsheet with video topic, format, platform, views, engagement. Feed this back into idea generation.
+
+5. **Batch production**: Rather than one video at a time, consider batching - have Claude interview once, generate 4 video specs, then render all 4. More efficient use of time.
+
+---
+
+### Thariq's Spec Interview Prompting Technique
+
+The prompt to use with Claude Code:
+
+```
+read this @SPEC.md and interview me in detail using the AskUserQuestionTool about literally anything: technical implementation, UI & UX, concerns, tradeoffs, etc. but make sure the questions are not obvious be very in-depth and continue interviewing me continually until it's complete, then write the spec to the file
+```
+
+This approach:
+- Starts with a minimal spec or prompt
+- Claude interviews you using the AskUserQuestionTool
+- For big features/new projects, Claude might ask 40+ questions
+- Results in a much more detailed spec with high user control
+- Then make a new session to execute the spec
+
+---
+
+### Remotion Technical Context (from Thariq's CLAUDE.md)
+
+Key Remotion concepts for Claude Code:
+
+**Project Structure**
+- Root file at "src/Root.tsx" defines compositions
+- <Composition> defines a video with id, component, durationInFrames, width, height, fps
+- Default: 30fps, 1080 height, 1920 width (but for vertical: 1080 width, 1920 height)
+
+**Core Hooks & Components**
+- useCurrentFrame() - get current frame number (starts at 0)
+- useVideoConfig() - get fps, durationInFrames, height, width
+- <Sequence from={10}> - place elements at specific times
+- <Series> - display elements one after another
+- <TransitionSeries> - with transitions between sequences
+- <AbsoluteFill> - layer elements on top of each other
+- <OffthreadVideo> - for video files
+- <Audio> - for audio files
+- <Img> - for static images
+- <Gif> - for animated GIFs (from @remotion/gif)
+
+**Animation Helpers**
+- interpolate(frame, [inputRange], [outputRange], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})
+- spring({fps, frame, config: {damping: 200}})
+- random('seed') - for deterministic randomness
+
+**Key Rules**
+- Components must be deterministic (no Math.random(), use random() with seed)
+- No useState for interactivity - animations driven by frame number
+- No useEffect - calculations should be pure based on frame
+- Assets from public/ folder use staticFile() API
+
+---
+
+### Existing AHIL Content Available
+
+From project files:
+1. **Parking Reform Coalition website** (index.html)
+   - Open letter explaining parking mandates harm
+   - List of supporting organizations
+   - Myth-busting content
+   - Petition CTA
+
+2. **4-Flats by Right Info Packet** (PDF)
+   - Benefits: affordable, socially equitable, environmentally friendly, fiscally responsible
+   - Data on housing unit loss (11,775 units since 2013)
+   - Proven models from other cities (Minneapolis, Portland, Sacramento, Austin)
+   - Myth-busting (displacement, character, infrastructure, schools, traffic)
+   - CPS capacity stats (151,000+ unfilled seats)
+
+3. **Property Tax Primer** (PDF)
+   - Illinois has 2nd highest effective property tax rate (2.1%)
+   - Median IL tax bill $4,744 vs $2,690 national average
+   - 64% of school funding from local property taxes
+   - Illinois has most local governments of any state (6,931)
+   - Pension liability data
+   - Detailed explanation of Cook County tax process
+
+---
+
+### Next Steps
+
+1. Create a SPEC.md file for the project
+2. Use Thariq's interview technique to flesh it out
+3. Set up Remotion project structure
+4. Build first prototype video (suggest: Data Drop using housing unit loss stat)
+5. Iterate and expand from there
