@@ -51,6 +51,7 @@ const brand = {
 ## Accessibility Requirements
 
 - High contrast (white on navy, orange accents)
+- **Never use blue text on navy backgrounds** - poor contrast, hard to read
 - Minimum 48px font for body text
 - 3+ seconds display time per text phrase
 - WCAG AA color contrast
@@ -89,6 +90,7 @@ import { ContentCard } from "../components/layouts/ContentCard";
     { icon: "🔓", text: "Second point" },
   ]}
   startDelay={0}
+  staggerDelay={45}  // Frames between each point (default: 30 = 1s)
 />
 ```
 
@@ -142,17 +144,23 @@ npx remotion render src/index.ts CompositionId --width=1080 --height=1920
 - Font is Nunito from @remotion/google-fonts
 - Logo at public/logo/AHIL_Logo.png
 - Always use `staticFile()` for assets in public/
+- **Copy tone**: Conversational beats formal. Use "Here's the thing:" not "Why does this matter?"
+- **Stagger timing**: 40-60 frames (1.3-2s) between content points feels natural
+- **CTA sentences**: Breaking into staggered lines ("More homes." / "More neighbors." / "More Illinois.") is more engaging than one block
 
 ## Video Structure Template
 
-Standard 60-second video structure:
+**Recommended length: 30-45 seconds** (60s feels too long for social media)
+
+**Persuasive structure:** Problem → Stakes → Solution → Proof → Action
 
 ```
-0-5s:   Logo + badge (opening)
-5-15s:  Hook (attention-grabbing statement)
-15-45s: Content (2-4 points with icons)
-45-55s: CTA (call to action)
-55-60s: Logo + handle (closing)
+0-3s:   Splash/intro
+3-9s:   Hook (the problem)
+9-15s:  Stakes (why it matters - conversational tone)
+15-23s: Solution (what we believe)
+23-36s: Proof (examples, data)
+36-45s: CTA (call to action)
 ```
 
 Code pattern:
@@ -161,29 +169,34 @@ Code pattern:
 export const MyVideo: React.FC = () => {
   return (
     <AbsoluteFill style={{ backgroundColor: colors.navy, fontFamily: fonts.body }}>
-      {/* Opening: Logo (0-5s) */}
-      <Sequence from={0} durationInFrames={secondsToFrames(5)}>
-        {/* Logo + badge */}
+      {/* Splash (0-3s) */}
+      <Sequence from={0} durationInFrames={secondsToFrames(3)}>
+        {/* Brief intro */}
       </Sequence>
 
-      {/* Hook (5-15s) */}
-      <Sequence from={secondsToFrames(5)} durationInFrames={secondsToFrames(10)}>
-        {/* Bold hook text */}
+      {/* Hook (3-9s) */}
+      <Sequence from={secondsToFrames(3)} durationInFrames={secondsToFrames(6)}>
+        {/* Bold statement about the problem */}
       </Sequence>
 
-      {/* Content (15-45s) */}
-      <Sequence from={secondsToFrames(15)} durationInFrames={secondsToFrames(30)}>
-        <ContentCard headline="..." points={[...]} />
+      {/* Stakes (9-15s) */}
+      <Sequence from={secondsToFrames(9)} durationInFrames={secondsToFrames(6)}>
+        {/* Why this matters - use conversational tone like "Here's the thing:" */}
       </Sequence>
 
-      {/* CTA (45-55s) */}
-      <Sequence from={secondsToFrames(45)} durationInFrames={secondsToFrames(10)}>
-        <CTACard message="..." />
+      {/* Solution (15-23s) */}
+      <Sequence from={secondsToFrames(15)} durationInFrames={secondsToFrames(8)}>
+        <ContentCard headline="..." points={[...]} staggerDelay={40} />
       </Sequence>
 
-      {/* Closing (55-60s) */}
-      <Sequence from={secondsToFrames(55)} durationInFrames={secondsToFrames(5)}>
-        {/* Logo + @handle */}
+      {/* Proof (23-36s) - optional */}
+      <Sequence from={secondsToFrames(23)} durationInFrames={secondsToFrames(13)}>
+        <ContentCard headline="..." points={[...]} staggerDelay={60} />
+      </Sequence>
+
+      {/* CTA (36-45s) */}
+      <Sequence from={secondsToFrames(36)} durationInFrames={secondsToFrames(9)}>
+        {/* Can use CTACard or custom staggered sentences */}
       </Sequence>
     </AbsoluteFill>
   );

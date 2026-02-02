@@ -84,7 +84,7 @@ export const CTACard: React.FC<CTACardProps> = ({
       <FadeInText delay={startDelay + 30} direction="up">
         <p
           style={{
-            color: colors.blue,
+            color: colors.white,
             fontSize: 32,
           }}
         >

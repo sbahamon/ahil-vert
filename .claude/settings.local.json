@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:yimbyaction.org)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "WebSearch",
+      "Bash(ls:*)",
+      "Bash(npx tsc:*)",
+      "Bash(lsof:*)",
+      "Bash(python:*)",
+      "Bash(python3:*)",
+      "WebFetch(domain:www.census.gov)",
+      "WebFetch(domain:fred.stlouisfed.org)",
+      "WebFetch(domain:housingdata.app)",
+      "Bash(open \"https://housingdata.app/metros/Chicago-Naperville-Elgin_IL-IN-WI\")",
+      "Bash(open \"http://localhost:3000/2026-01/ChicagoAffordability2026\")"
+    ]
+  }
+}

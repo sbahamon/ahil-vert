@@ -11,12 +11,15 @@ interface ContentCardProps {
   headline: string;
   points: ContentPoint[];
   startDelay?: number;
+  /** Frames between each point animation (default: 30 = 1 second) */
+  staggerDelay?: number;
 }
 
 export const ContentCard: React.FC<ContentCardProps> = ({
   headline,
   points,
   startDelay = 0,
+  staggerDelay = 30,
 }) => {
   return (
     <AbsoluteFill
@@ -53,7 +56,7 @@ export const ContentCard: React.FC<ContentCardProps> = ({
         {points.map((point, index) => (
           <FadeInText
             key={index}
-            delay={startDelay + 20 + index * 30}
+            delay={startDelay + 20 + index * staggerDelay}
             direction="left"
           >
             <div

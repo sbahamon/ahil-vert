@@ -83,7 +83,7 @@ Add your composition to `src/Root.tsx`:
 <Composition
   id="MyVideo"
   component={MyVideo}
-  durationInFrames={secondsToFrames(60)}
+  durationInFrames={secondsToFrames(45)}  // 30-45s recommended
   fps={30}
   width={1080}
   height={1920}
@@ -129,6 +129,7 @@ Display multiple content points with icons.
     { icon: "🔓", text: "Second point" },
   ]}
   startDelay={0}
+  staggerDelay={45}  // Frames between each point (default: 30)
 />
 ```
 
@@ -158,6 +159,8 @@ Call-to-action ending card.
 | Navy | `#0b162a` | Main backgrounds |
 | White | `#ffffff` | Text |
 
+> ⚠️ **Contrast warning**: Don't use Blue text on Navy backgrounds — poor contrast. Use White or Orange text on Navy.
+
 ### Font
 
 **Nunito** (Google Fonts) - Rounded bold sans-serif matching the AHIL logo.
@@ -180,8 +183,8 @@ Debunk a common objection with evidence.
 ### Explainer (60-90s)
 Break down complex policy simply.
 
-### Pillar Series (60s)
-YIMBY Action principles introduction.
+### Pillar Series (30-45s)
+YIMBY Action principles introduction. Shorter works better for social engagement.
 
 ## Workflow
 
