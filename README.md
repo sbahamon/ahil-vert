@@ -29,16 +29,23 @@ ahil-vert/
 │   ├── components/
 │   │   ├── animations/
 │   │   │   └── FadeInText.tsx      # Animated text component
-│   │   └── layouts/
-│   │       ├── ContentCard.tsx     # Multi-point content
-│   │       ├── CTACard.tsx         # Call-to-action
-│   │       └── TitleCard.tsx       # Title screens
+│   │   ├── layouts/
+│   │   │   ├── ContentCard.tsx     # Multi-point content
+│   │   │   ├── CTACard.tsx         # Call-to-action
+│   │   │   └── TitleCard.tsx       # Title screens
+│   │   └── maps/
+│   │       └── SpilloverMap.tsx    # Animated Chicago metro map
 │   └── compositions/
 │       └── YYYY-MM/                # Organized by date
 │           └── video-name/
+│   └── data/
+│       └── county-paths.json       # Census Bureau SVG paths
+├── scripts/
+│   └── generate-county-paths.mjs   # GeoJSON → SVG converter
 ├── public/
-│   └── logo/
-│       └── AHIL_Logo.png           # Brand logo
+│   ├── logo/
+│   │   └── AHIL_Logo.png           # Brand logo
+│   └── maps/                       # Preview SVGs
 ├── specs/                          # Video specifications
 │   └── YYYY-MM/
 └── ideas/                          # Video idea backlog
@@ -146,6 +153,35 @@ Call-to-action ending card.
   startDelay={0}
 />
 ```
+
+### SpilloverMap
+
+Animated SVG map of the Chicago metro area using real US Census Bureau county boundaries.
+
+```tsx
+import { SpilloverMap } from "../../components/maps/SpilloverMap";
+
+<SpilloverMap startDelay={0} />
+```
+
+Props:
+- `startDelay` - Frame delay before animation begins
+
+Animation phases: map fade-in → lock icons on collar counties → arrows draw toward NWI → NWI highlights → pulse.
+
+## Geographic Maps
+
+County boundary SVG paths are generated from US Census Bureau cartographic data. A reusable `geojson-to-svg` skill (at `~/.claude/skills/geojson-to-svg/`) provides a CLI for converting any US county boundaries into SVG paths:
+
+```bash
+node ~/.claude/skills/geojson-to-svg/scripts/geojson_to_svg.mjs \
+  --fips 17031,17043,17089 \
+  --names "Cook,DuPage,Kane" \
+  --out-json ./src/data/county-paths.json \
+  --out-svg ./public/maps/preview.svg
+```
+
+See `scripts/generate-county-paths.mjs` for the project-specific version used to generate Chicago metro county paths.
 
 ## Brand Guidelines
 

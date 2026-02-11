@@ -12,6 +12,7 @@ This is a Remotion-based video generation system for Abundant Housing Illinois (
 - **housing-copywriter**: Use for all messaging and copy (follow pro-housing terminology)
 - **chicago-data-portal**: Use when pulling Chicago city data for visualizations
 - **us-census-data**: Use for demographic/housing data visualizations
+- **geojson-to-svg**: Use when creating geographic map visualizations (county boundaries, wards, districts). Converts Census Bureau GeoJSON into SVG paths by FIPS code. See `src/components/maps/SpilloverMap.tsx` for a working example.
 
 ## Brand Colors
 
@@ -106,6 +107,14 @@ import { CTACard } from "../components/layouts/CTACard";
 />
 ```
 
+### SpilloverMap (Geographic Map)
+```tsx
+import { SpilloverMap } from "../components/maps/SpilloverMap";
+
+<SpilloverMap startDelay={30} />
+```
+Uses real US Census Bureau county boundaries (Cook, DuPage, Kane, Lake IL, McHenry, Will, Lake County IN). Animated phases: map fade-in → lock icons on collar counties → arrows draw toward NWI → NWI highlights orange. County path data lives in `src/data/county-paths.json`. To generate paths for different regions, use the **geojson-to-svg** skill.
+
 ### Brand Constants
 ```tsx
 import { colors, fonts, secondsToFrames } from "../lib/brand";
@@ -147,6 +156,7 @@ npx remotion render src/index.ts CompositionId --width=1080 --height=1920
 - **Copy tone**: Conversational beats formal. Use "Here's the thing:" not "Why does this matter?"
 - **Stagger timing**: 40-60 frames (1.3-2s) between content points feels natural
 - **CTA sentences**: Breaking into staggered lines ("More homes." / "More neighbors." / "More Illinois.") is more engaging than one block
+- **Geographic maps**: Use the geojson-to-svg skill to generate real county boundaries from Census data. County path data goes in `src/data/`, map components in `src/components/maps/`
 
 ## Video Structure Template
 

@@ -14,7 +14,10 @@
       "WebFetch(domain:fred.stlouisfed.org)",
       "WebFetch(domain:housingdata.app)",
       "Bash(open \"https://housingdata.app/metros/Chicago-Naperville-Elgin_IL-IN-WI\")",
-      "Bash(open \"http://localhost:3000/2026-01/ChicagoAffordability2026\")"
+      "Bash(open \"http://localhost:3000/2026-01/ChicagoAffordability2026\")",
+      "Bash(node scripts/generate-county-paths.mjs:*)",
+      "Bash(node:*)",
+      "Bash(git push:*)"
     ]
   }
 }
