@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 900" width="850" height="900">
+  <rect width="850" height="900" fill="#0b162a" />
+  <path d="M501.3,32.6L499,100.1L491.8,114.7L485.2,152.5L495.8,196.4L520.6,246.4L561.9,305.6L563,324L584.1,402.7L589.9,410.3L591,439.9L613.9,489.7L627.9,500.9L631.1,526.1L632.7,525.1L639.8,536.7L656.1,548.4L671.2,549.8L674.1,556.2L671,560.1L678.3,567.3L724.8,579.8L772.5,579.1 L860,579.1 L860,32.6 Z" fill="#1a3a5c" stroke="none" />
+  <path d="M631.1,526.1L630.3,676L506.1,676.3L504.9,620.4L450.2,621.6L449,566.6L394.7,568.2L394,540.4L447.9,520.8L444.9,346.1L284.3,351.1L295.8,245.2L520.6,246.4L561.9,305.6L563,324L584.1,402.7L589.9,410.3L591,439.9L613.9,489.7L627.9,500.9L631.1,526.1Z" fill="#ef5917" stroke="#ffffff" stroke-width="1.5" />
+  <path d="M370,348.2L444.9,346.1L447.9,520.8L394,540.4L393.4,513.1L284.8,515.8L284.3,351.1L370,348.2Z" fill="#1e3a5f" stroke="#ffffff" stroke-width="1.5" />
+  <path d="M284.2,460.6L284.8,515.8L125.2,519L125.5,354.1L131.4,245.7L295.8,245.2L284.3,351.1L284.2,460.6Z" fill="#1e3a5f" stroke="#ffffff" stroke-width="1.5" />
+  <path d="M384.3,30.4L501.3,32.6L499,100.1L491.8,114.7L485.2,152.5L495.8,196.4L520.6,246.4L314,245.2L314.1,30L384.3,30.4Z" fill="#1e3a5f" stroke="#ffffff" stroke-width="1.5" />
+  <path d="M264.7,30.8L314.1,30L314,245.2L76.6,245.7L75.7,31.5L264.7,30.8Z" fill="#1e3a5f" stroke="#ffffff" stroke-width="1.5" />
+  <path d="M630.3,676L629.8,784.5L401.2,788L402.1,842.7L293.1,845.3L285,515.9L393.4,513.1L394.7,568.2L449,566.6L450.2,621.6L504.9,620.4L506.1,676.3L630.3,676Z" fill="#1e3a5f" stroke="#ffffff" stroke-width="1.5" />
+  <path d="M629.8,784.4L632.7,525.1L639.8,536.7L656.1,548.4L671.2,549.8L674.1,556.2L671,560.1L678.3,567.3L724.8,579.8L772.5,579.1L774.3,819.8L682.5,870L629.9,867.6L629.8,784.4Z" fill="#2a4a3f" stroke="#ffffff" stroke-width="1.5" />
+  <text x="510" y="472" text-anchor="middle" fill="white" font-size="18" font-family="sans-serif">Cook</text>
+  <text x="374" y="435" text-anchor="middle" fill="white" font-size="18" font-family="sans-serif">DuPage</text>
+  <text x="227" y="394" text-anchor="middle" fill="white" font-size="18" font-family="sans-serif">Kane</text>
+  <text x="439" y="118" text-anchor="middle" fill="white" font-size="18" font-family="sans-serif">Lake</text>
+  <text x="218" y="102" text-anchor="middle" fill="white" font-size="18" font-family="sans-serif">McHenry</text>
+  <text x="459" y="669" text-anchor="middle" fill="white" font-size="18" font-family="sans-serif">Will</text>
+  <text x="676" y="652" text-anchor="middle" fill="white" font-size="18" font-family="sans-serif">Lake</text>
+</svg>
